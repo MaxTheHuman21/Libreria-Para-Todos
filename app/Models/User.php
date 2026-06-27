@@ -34,5 +34,6 @@ class User extends Authenticatable
     {
         return $this->hasMany(Sale::class);
     }
-    
+
+    protected $fillable = ['nombre', 'email','password','role'];
 }
