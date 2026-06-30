@@ -12,12 +12,14 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
 
+    //CORRECCIONES: SE AGREGARON LAS '/' FALTANTES A LAS RUTAS DE LA API PARA SU EXCEPCION CSRF
     ->withMiddleware(function (Middleware $middleware): void {
         $middleware->validateCsrfTokens(except: [
-        'login-api',
-        'logout-api',
-        'libros',
-        'libros/*'
+        '/login-api',
+        '/logout-api',
+        '/libros',
+        '/libros/*',
+        '/api/ventas'
         ]);
 
         $middleware->alias([

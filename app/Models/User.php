@@ -35,5 +35,6 @@ class User extends Authenticatable
         return $this->hasMany(Sale::class);
     }
 
-    protected $fillable = ['nombre', 'email','password','role'];
+    //CORRECCIONES: INCONSISTENCIA ENTRE MODELO Y AUTH (NOMBRE => NAME), CONSISTENCIA CON BASE DE DATOS
+    protected $fillable = ['name', 'email','password','role'];
 }
