@@ -18,6 +18,8 @@ Route::get('/', function () {
 //CORRECCIONES, SE AGREGO LA DIAGONAL '/' a /logout-api
 //Endpoints publicos
 Route::post('/login-api', [AuthController::class, 'login']);
+
+//logout route
 Route::get('/logout-api', [AuthController::class,'logout']);
 
 Route::middleware(['auth'])->group(function(){
@@ -32,7 +34,7 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/libros', [BookController::class, 'index']);
     Route::post('/api/ventas', [SaleController::class, 'store']);
 
-    
+
     Route::get('/ticket/{id}', function($id){
         $venta = Sale::with('books', 'user')->findOrFail($id);
         return view('ticket', compact('venta'));
